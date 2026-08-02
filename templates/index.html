@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>YT DOWNLOADER</h1>
+        <p>Paste a YouTube link, pick a format, and download it directly to any device on this Wi-Fi network.</p>
+    </header>
+
+    <main>
+        <form id="download-form" novalidate>
+            <div>
+                <label for="url">YouTube URL</label>
+                <input
+                    type="url"
+                    id="url"
+                    name="url"
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    required
+                    autocomplete="off"
+                >
+            </div>
+
+            <div>
+                <label>Format</label>
+                <div class="format-selector">
+                    <div class="format-option">
+                        <input type="radio" id="format-mp4" name="format" value="mp4" checked>
+                        <label for="format-mp4">MP4 Video</label>
+                    </div>
+                    <div class="format-option">
+                        <input type="radio" id="format-mp3" name="format" value="mp3">
+                        <label for="format-mp3">MP3 Audio</label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quality-wrapper" style="display: none;">
+                <label for="quality">
+                    Quality
+                    <span id="quality-status"></span>
+                </label>
+                <select id="quality" name="quality">
+                    <option value="">Best available</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submit-btn">
+                <span class="spinner" id="spinner"></span>
+                <span id="submit-label">Download</span>
+            </button>
+
+            <p id="status" role="status" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <footer>
+        <p>Self-hosted &middot; Local network only &middot; Powered by yt-dlp</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

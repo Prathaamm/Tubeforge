@@ -1,0 +1,225 @@
+/* ==========================================================================
+   style.css
+   Cyberpunk theme for the YouTube Downloader.
+   Mobile-first: base styles target small screens; media queries enhance
+   for tablet and desktop.
+   ========================================================================== */
+
+:root {
+    --bg: #09090b;
+    --bg-elevated: #131316;
+    --accent: #ff0055;
+    --accent-glow: rgba(255, 0, 85, 0.5);
+    --purple: #7b2ff7;
+    --purple-glow: rgba(123, 47, 247, 0.4);
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --border: #27272a;
+    --success: #00ffab;
+    --error: #ff3b3b;
+    --radius: 14px;
+    --transition: 0.25s ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg);
+    background-image:
+        radial-gradient(circle at 20% 20%, var(--purple-glow) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, var(--accent-glow) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+}
+
+header { text-align: center; margin-bottom: 32px; max-width: 600px; }
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+}
+
+header p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; }
+
+main {
+    width: 100%;
+    max-width: 520px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+form { display: flex; flex-direction: column; gap: 18px; }
+
+label { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; display: block; }
+
+input[type="url"] {
+    width: 100%;
+    padding: 14px 16px;
+    background: #0f0f12;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input[type="url"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+input[type="url"]::placeholder { color: #52525b; }
+
+select#quality {
+    width: 100%;
+    padding: 12px 16px;
+    background: #0f0f12;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+select#quality:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+select#quality:disabled { opacity: 0.5; cursor: not-allowed; }
+
+#quality-status {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-weight: normal;
+    margin-left: 6px;
+}
+
+#quality-status.error { color: var(--error); }
+
+.format-selector { display: flex; gap: 12px; }
+
+.format-option { flex: 1; position: relative; }
+
+.format-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    margin: 0;
+}
+
+.format-option label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: #0f0f12;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+    margin-bottom: 0;
+}
+
+.format-option input[type="radio"]:checked + label {
+    border-color: var(--accent);
+    color: var(--text-primary);
+    box-shadow: 0 0 16px var(--accent-glow);
+    background: linear-gradient(135deg, rgba(255,0,85,0.12), rgba(123,47,247,0.12));
+}
+
+button[type="submit"] {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px var(--accent-glow);
+}
+
+button[type="submit"]:active:not(:disabled) { transform: translateY(0); }
+
+button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+}
+
+.spinner.active { display: inline-block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#status {
+    margin-top: 18px;
+    min-height: 24px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+}
+
+#status.success { color: var(--success); }
+#status.error { color: var(--error); }
+
+footer {
+    margin-top: 32px;
+    text-align: center;
+    color: #52525b;
+    font-size: 0.8rem;
+    padding-bottom: 12px;
+}
+
+footer a { color: var(--text-secondary); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+@media (min-width: 640px) {
+    header h1 { font-size: 2.4rem; }
+    header p { font-size: 1.05rem; }
+    main { padding: 32px; }
+}
+
+@media (min-width: 1024px) {
+    body { padding: 48px 16px; }
+    header h1 { font-size: 2.8rem; }
+}

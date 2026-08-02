@@ -1,0 +1,28 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# --- Virtual environment ---
+venv/
+.venv/
+env/
+
+# --- Environment / secrets ---
+.env
+
+# --- Runtime downloads (ephemeral by design) ---
+downloads/*
+!downloads/.gitkeep
+
+# --- Editor / OS cruft ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Logs ---
+*.log
