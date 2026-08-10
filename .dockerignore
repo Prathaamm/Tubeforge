@@ -12,4 +12,5 @@ __pycache__/
 Thumbs.db
 downloads/*
 !downloads/.gitkeep
+cookies.txt
 README.md
