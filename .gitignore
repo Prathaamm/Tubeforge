@@ -12,6 +12,7 @@ env/
 
 # --- Environment / secrets ---
 .env
+cookies.txt
 
 # --- Runtime downloads (ephemeral by design) ---
 downloads/*

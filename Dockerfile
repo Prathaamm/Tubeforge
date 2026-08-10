@@ -22,7 +22,7 @@ WORKDIR /app
 # This layer is placed BEFORE copying application code so Docker can
 # cache it -- rebuilding after an app.py change won't reinstall ffmpeg.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg \
+    && apt-get install -y --no-install-recommends ffmpeg aria2 \
     && rm -rf /var/lib/apt/lists/*
 
 # --- Python dependencies --------------------------------------------------
