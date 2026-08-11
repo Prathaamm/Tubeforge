@@ -24,7 +24,7 @@ It is intentionally simple: **no accounts, no sign-in flow, no ads, and no subsc
 ## Documentation
 
 **Printable install and usage guide:**  
-[Download the TubeForge Install & Usage Guide (PDF)](docs/TubeForge-Install-Usage-Guide.pdf)
+[Download the TubeForge Install & Usage Guide (PDF)](TubeForge-Install-Usage-Guide.pdf)
 
 The PDF covers local Windows setup, Docker setup, configuration, LAN access, cookies, troubleshooting, download behavior, and development notes.
 
@@ -421,8 +421,7 @@ youtube-downloader/
 │   ├── test_utils.py
 │   └── MANUAL_CHECKLIST.md
 ├── downloads/
-└── docs/
-    └── TubeForge-Install-Usage-Guide.pdf
+└── TubeForge-Install-Usage-Guide.pdf
 ```
 
 ### Backend responsibilities
